@@ -1,6 +1,6 @@
 <?php
 
-require('./player.class.php');
+require('./src/player.class.php');
 
 $me = new Player();
 $me->setState(Player::STATE_POISON);
