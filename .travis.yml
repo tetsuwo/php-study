@@ -1,2 +1,2 @@
 language: php
-script: php ./src/run.php
+script: phpunit tests/
