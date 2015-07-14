@@ -16,7 +16,7 @@ class AllTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($me->getState() === Player::STATE_POISON);
 
         $me->setState($me->getState() | Player::STATE_PARALYSIS);
-        $this->assertTrue($me->getState() === 18);
+        $this->assertTrue($me->getState() === 34);
 
     }
 }
