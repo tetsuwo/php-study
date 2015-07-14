@@ -9,8 +9,10 @@ class AllTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(true);
     }
 
-    public function test01
+    public function test01()
     {
-        $this->assertTrue(true);
+        $me = new Player();
+        $me->setState(Player::STATE_POISON);
+        $this->assertTrue($me->getState() === Player::STATE_POISON);
     }
 }
