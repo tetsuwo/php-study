@@ -28,4 +28,15 @@ class AllTest extends PHPUnit_Framework_TestCase
             $me->getState() === Player::STATE_POISON + Player::STATE_PARALYSIS
         );
     }
+
+    public function test03_CURE_POISON()
+    {
+        $me = new Player();
+        $me->setState($me->getState() | Player::STATE_POISON);
+
+        $me->setState($me->getState() | Player::STATE_PARALYSIS);
+        $this->assertTrue(
+            $me->getState() === Player::STATE_POISON + Player::STATE_PARALYSIS
+        );
+    }
 }
