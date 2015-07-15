@@ -1,6 +1,6 @@
 <?php
 
-require(dirname(__FILE__) . '/../src/player.class.php');
+require(dirname(__FILE__) . '/../src/Player.class.php');
 
 class AllTest extends PHPUnit_Framework_TestCase
 {
