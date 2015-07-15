@@ -49,9 +49,9 @@ class AllTest extends PHPUnit_Framework_TestCase
         $me->setState($me->getState() | Status::POISON);
         $me->setState($me->getState() | Status::PARALYSIS);
         $me->setState($me->getState() | Status::CONFUSION);
-        $me->setState($me->getState() ^ Item::BANNOUYAKU);
         $this->assertTrue(
             $me->getState() === 0
         );
+        var_dump($me->getState(), Status::POISON);
     }
 }
