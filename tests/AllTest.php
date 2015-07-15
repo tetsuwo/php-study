@@ -10,14 +10,26 @@ class AllTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(true);
     }
 
-    public function test01()
+    public function test01_A_STATE()
     {
         $me = new Player();
         $me->setState(Player::STATE_POISON);
         $this->assertTrue($me->getState() === Player::STATE_POISON);
 
-        $me->setState($me->getState() | Player::STATE_PARALYSIS);
+        $me->setState($me->getSt
         $this->assertTrue($me->getState() === 34);
 
+    }
+
+    public function test02_MULTIPLE_STATE()
+    {
+        $me = new Player();
+        $me->setState($me->getState() | Player::STATE_POISON);
+        $this->assertTrue($me->getState() === Player::STATE_POISON);
+
+        $me->setState($me->getState() | Player::STATE_PARALYSIS);
+        $this->assertTrue(
+            $me->getState() === Player::STATE_POISON + Player::STATE_PARALYSIS
+        );
     }
 }
