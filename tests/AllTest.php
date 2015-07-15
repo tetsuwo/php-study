@@ -15,17 +15,13 @@ class AllTest extends PHPUnit_Framework_TestCase
         $me = new Player();
         $me->setState(Player::STATE_POISON);
         $this->assertTrue($me->getState() === Player::STATE_POISON);
-
-        $me->setState($me->getSt
-        $this->assertTrue($me->getState() === 34);
-
     }
 
     public function test02_MULTIPLE_STATE()
     {
         $me = new Player();
         $me->setState($me->getState() | Player::STATE_POISON);
-        $this->assertTrue($me->getState() === Player::STATE_POISON));
+        $this->assertTrue($me->getState() === Player::STATE_POISON);
 
         $me->setState($me->getState() | Player::STATE_PARALYSIS);
         $this->assertTrue(
