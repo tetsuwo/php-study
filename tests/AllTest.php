@@ -2,6 +2,7 @@
 
 require(dirname(__FILE__) . '/../src/Player.class.php');
 require(dirname(__FILE__) . '/../src/Item.class.php');
+require(dirname(__FILE__) . '/../src/Status.class.php');
 
 class AllTest extends PHPUnit_Framework_TestCase
 {
@@ -13,30 +14,31 @@ class AllTest extends PHPUnit_Framework_TestCase
     public function test01_A_STATE()
     {
         $me = new Player();
-        $me->setState(Player::STATE_POISON);
-        $this->assertTrue($me->getState() === Player::STATE_POISON);
+        $me->setState(Status::POISON);
+        $this->assertTrue($me->getState() === Status::POISON);
     }
 
     public function test02_MULTIPLE_STATE()
     {
         $me = new Player();
-        $me->setState($me->getState() | Player::STATE_POISON);
-        $this->assertTrue($me->getState() === Player::STATE_POISON);
+        $me->setState($me->getState() | Status::POISON);
+        $this->assertTrue($me->getState() === Status::POISON);
 
-        $me->setState($me->getState() | Player::STATE_PARALYSIS);
+        $me->setState($me->getState() | Status::PARALYSIS);
         $this->assertTrue(
-            $me->getState() === Player::STATE_POISON + Player::STATE_PARALYSIS
+            $me->getState() === Status::POISON + Status::PARALYSIS
         );
     }
 
     public function test03_CURE_POISON()
     {
         $me = new Player();
-        $me->setState($me->getState() | Player::STATE_POISON);
-
-        $me->setState($me->getState() | Player::STATE_PARALYSIS);
+        $me->setState($me->getState() | Status::POISON);
+        $me->setState($me->getState() | Status::PARALYSIS);
+        $me->setState($me->getState() | Status::CONFUSION);
+        $me->setState($me->getState() ^ Item::DOKUKESHI);
         $this->assertTrue(
-            $me->getState() === Player::STATE_POISON + Player::STATE_PARALYSIS
+            $me->getState() === Status::PARALYSIS + Status::CONFUSION
         );
     }
 }
