@@ -44,11 +44,13 @@ class AllTest extends PHPUnit_Framework_TestCase
     public function test04_CURE_WHOLE()
     {
         $me = new Player();
+        echo "\n1 ... "; var_dump($me->getState()); echo "\n";
         $me->setState($me->getState() | Status::POISON);
         $me->setState($me->getState() | Status::PARALYSIS);
         $me->setState($me->getState() | Status::CONFUSION);
+        echo "\n2 ... "; var_dump($me->getState()); echo "\n";
         $me->setState($me->getState() ^ Item::BANNOUYAKU);
-        var_dump($me->getState());
+        echo "\n3 ... "; var_dump($me->getState()); echo "\n";
         $this->assertTrue(
             $me->getState() === 0
         );
