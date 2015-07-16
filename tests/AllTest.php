@@ -16,7 +16,6 @@ class AllTest extends PHPUnit_Framework_TestCase
         $me = new Player();
         $me->setState(Status::POISON);
         $this->assertTrue($me->getState() === Status::POISON);
-        var_dump($me->getState(), Status::POISON);
     }
 
     public function test02_MULTIPLE_STATE()
