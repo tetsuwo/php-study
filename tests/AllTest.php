@@ -24,7 +24,6 @@ class AllTest extends PHPUnit_Framework_TestCase
         $me = new Player();
         $me->setState($me->getState() | Status::POISON);
         $this->assertTrue($me->getState() === Status::POISON);
-
         $me->setState($me->getState() | Status::PARALYSIS);
         $this->assertTrue(
             $me->getState() === Status::POISON + Status::PARALYSIS
@@ -50,6 +49,7 @@ class AllTest extends PHPUnit_Framework_TestCase
         $me->setState($me->getState() | Status::PARALYSIS);
         $me->setState($me->getState() | Status::CONFUSION);
         $me->setState($me->getState() ^ Item::BANNOUYAKU);
+        var_dump($me->getState());
         $this->assertTrue(
             $me->getState() === 0
         );
