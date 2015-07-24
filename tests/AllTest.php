@@ -49,7 +49,7 @@ class AllTest extends PHPUnit_Framework_TestCase
         $me->setState($me->getState() | Status::PARALYSIS);
         $me->setState($me->getState() | Status::CONFUSION);
         echo "\n2 ... "; var_dump($me->getState(), decbin($me->getState())); echo "\n";
-        echo "\n2 ... "; var_dump($me->getState() & ~Item::BANNOUYAKU, decbin($me->getState()& ~Item::BANNOUYAKU)); echo "\n";
+        echo "\n2 ... "; var_dump(1 & ~Item::BANNOUYAKU, decbin($me->getState()& ~Item::BANNOUYAKU)); echo "\n";
         $me->setState($me->getState() ^ Item::BANNOUYAKU);
         echo "\n3 ... "; var_dump($me->getState(), decbin($me->getState())); echo "\n";
         $this->assertTrue(
