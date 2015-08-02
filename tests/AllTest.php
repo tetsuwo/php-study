@@ -44,17 +44,25 @@ class AllTest extends PHPUnit_Framework_TestCase
     public function test04_CURE_WHOLE()
     {
         $me = new Player();
-        echo "\n1 ... "; var_dump($me->getState(), decbin($me->getState())); echo "\n";
         $me->setState($me->getState() | Status::POISON);
         $me->setState($me->getState() | Status::PARALYSIS);
         $me->setState($me->getState() | Status::CONFUSION);
-        echo "\n2 ... "; var_dump($me->getState(), decbin($me->getState())); echo "\n";
-        echo "\n3 ... "; var_dump(1 & ~Item::BANNOUYAKU);
-        echo "\n4 ... "; var_dump(decbin($me->getState() & ~Item::BANNOUYAKU)); echo "\n";
         $me->setState($me->getState() & ~Item::BANNOUYAKU);
-        echo "\n5 ... "; var_dump($me->getState(), decbin($me->getState())); echo "\n";
         $this->assertTrue(
             $me->getState() === 0
+        );
+    }
+
+    public function test05_CURE_WHOLE_WITH_DEAD()
+    {
+        $me = new Player();
+        $me->setState($me->getState() | Status::POISON);
+        $me->setState($me->getState() | Status::PARALYSIS);
+        $me->setState($me->getState() | Status::CONFUSION);
+        $me->setState($me->getState() | Status::DEATH);
+        $me->setState($me->getState() & ~Item::BANNOUYAKU);
+        $this->assertTrue(
+            $me->getState() === 1
         );
     }
 }
